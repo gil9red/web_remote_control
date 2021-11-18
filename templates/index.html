@@ -34,7 +34,7 @@
         .icon_target {
             background-image: url("{{ url_for('static', filename='icons/bullseye-with-target-symbol-svgrepo-com.svg') }}");
         }
-        #button_timer {
+        #button_timer, #button_show_cursor_as_target, #button_full_black_screen {
             width: 40px;
             height: 40px;
         }
@@ -231,7 +231,7 @@
                 <div class="cell m-1">
                     <button
                         id="button_timer" type="button"
-                        class="btn btn-outline-primary float-right m-1 p-1"
+                        class="btn btn-outline-primary float-right p-1"
                         data-toggle="modal" data-target="#modalTimer"
                     >
                         <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" style="display: none"></span>
