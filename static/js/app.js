@@ -52,7 +52,7 @@ function on_change_mouse_mode(is_joystick) {
 
     localStorage.switch_mouse_mode = is_joystick;
 
-    $('#joystick_wrapper').toggle(is_joystick);
+    $('#joystick').toggle(is_joystick);
     $('#mouse_area').toggle(!is_joystick);
 }
 
@@ -120,8 +120,6 @@ function init_control_switch_mouse_mode() {
     });
 
     let joystickEl = $('#joystick');
-    joystickEl.width(joystickEl.parent().width());
-    joystickEl.height(joystickEl.parent().height());
 
     // Actualize mouse mode
     on_change_mouse_mode();

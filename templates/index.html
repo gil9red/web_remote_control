@@ -279,9 +279,7 @@
             <div class="d-flex flex-row m-1 h-100">
                 <div id="screenshot_canvas" class="w-100 h-100 border border-dark mr-1">
                     <div id="mouse_area" class="w-100 h-100" style="display: none"></div>
-                    <div id="joystick_wrapper" class="w-100 h-100">
-                        <div id="joystick" style="position: absolute"></div>
-                    </div>
+                    <div id="joystick" class="w-100 h-100 position-relative"></div>
                 </div>
                 <div id="mouse_wheel" class="d-flex flex-column">
                     <button id="mouse_wheel_up" class="border border-dark h-100">⬆</button>
@@ -290,6 +288,7 @@
             </div>
             <div class="d-flex flex-row m-1 mouse_button_container">
                 <button id="mouse_left" class="h-100 w-100">LEFT</button>
+                <div style="width: 5px"></div>
                 <button id="mouse_right" class="h-100 w-100">RIGHT</button>
             </div>
         </div>
