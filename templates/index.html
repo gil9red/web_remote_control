@@ -86,6 +86,11 @@
             -ms-user-select:       none; /* Internet Explorer/Edge */
             user-select:           none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
         }
+
+        .sep_4px {
+            width: 4px;
+            height: 4px;
+        }
     </style>
 </head>
 
@@ -226,7 +231,7 @@
                     >
                 </div>
                 <div class="cell m-1">
-                    <button class="key_control" value="up">UP</button>
+                    <button class="key_control border border-dark" value="up">UP</button>
                 </div>
                 <div class="cell m-1">
                     <button
@@ -241,13 +246,13 @@
             </div>
             <div class="d-flex flex-row justify-content-center">
                 <div class="cell m-1">
-                    <button class="key_control" value="left">LEFT</button>
+                    <button class="key_control border border-dark" value="left">LEFT</button>
                 </div>
                 <div class="cell m-1">
-                    <button class="key_control" value="space">SPACE</button>
+                    <button class="key_control border border-dark" value="space">SPACE</button>
                 </div>
                 <div class="cell m-1">
-                    <button class="key_control" value="right">RIGHT</button>
+                    <button class="key_control border border-dark" value="right">RIGHT</button>
                 </div>
             </div>
             <div class="d-flex flex-row justify-content-center">
@@ -262,7 +267,7 @@
                     </div>
                 </div>
                 <div class="cell m-1">
-                    <button class="key_control" value="down">DOWN</button>
+                    <button class="key_control border border-dark" value="down">DOWN</button>
                 </div>
                 <div class="cell m-1">
                     <div class="d-flex align-items-end flex-column h-100">
@@ -287,13 +292,14 @@
                 </div>
                 <div id="mouse_wheel" class="d-flex flex-column">
                     <button id="mouse_wheel_up" class="border border-dark h-100">⬆</button>
+                    <div class="sep_4px"></div>
                     <button id="mouse_wheel_down" class="border border-dark h-100">⬇</button>
                 </div>
             </div>
-            <div class="d-flex flex-row m-1 mouse_button_container">
-                <button id="mouse_left" class="h-100 w-100">LEFT</button>
-                <div style="width: 5px"></div>
-                <button id="mouse_right" class="h-100 w-100">RIGHT</button>
+            <div class="d-flex flex-row ml-1 mr-1 mb-1 mouse_button_container">
+                <button id="mouse_left" class="h-100 w-100 border border-dark">LEFT</button>
+                <div class="sep_4px"></div>
+                <button id="mouse_right" class="h-100 w-100 border border-dark">RIGHT</button>
             </div>
         </div>
     </div>
