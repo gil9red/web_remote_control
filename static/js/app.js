@@ -24,13 +24,13 @@ function send_ajax(url, data, callbackFunc) {
 }
 
 function pointerEventToXY(e) {
-    var out = {
+    let out = {
         x : 0,
         y : 0
     };
 
     if (e.type.startsWith("touch")) {
-        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        let touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
         out.x = touch.pageX;
         out.y = touch.pageY;
     }
@@ -147,7 +147,7 @@ function init_control_switch_mouse_mode() {
 
                 console.log("joystick", _press_pos, _last_pos, (relative_x + 'x' + relative_y));
 
-                var data = {"relative_x": relative_x, "relative_y": relative_y};
+                let data = {"relative_x": relative_x, "relative_y": relative_y};
                 send_ajax("/mouse_move", data);
 
             }, 100);
@@ -188,7 +188,7 @@ function init_control_handlers() {
     });
 
     $("#mouse_wheel_down").click(function() {
-        var data = {"down": true};
+        let data = {"down": true};
         send_ajax("/scroll", data);
     });
 
