@@ -172,23 +172,18 @@ function init_control_handlers() {
         return bubble;
     }
 
-    $("#mouse_left").click(function() {
-        var data = {"button": "left"};
-        send_ajax("/mouse_click", data);
-    });
-
-    $("#mouse_right").click(function() {
-        var data = {"button": "right"};
+    $(".mouse_control").click(function() {
+        let data = {"button": $(this).attr("value")};
         send_ajax("/mouse_click", data);
     });
 
     $(".key_control").click(function() {
-        var data = {"key": $(this).attr("value")};
+        let data = {"key": $(this).attr("value")};
         send_ajax("/key_click", data);
     });
 
     $("#mouse_wheel_up").click(function() {
-        var data = {"down": false};
+        let data = {"down": false};
         send_ajax("/scroll", data);
     });
 

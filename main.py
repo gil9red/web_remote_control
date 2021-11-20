@@ -260,7 +260,7 @@ def mouse_click():
     data = request.get_json()
     log.info(f'data: {data}')
 
-    possible_values = ('left', 'right')
+    possible_values = 'left', 'right', 'double'
 
     button = data.get('button')
     if button not in possible_values:
@@ -268,7 +268,10 @@ def mouse_click():
         log.info(text)
         return jsonify({'text': text})
 
-    pyautogui.click(button=button)
+    if button == 'double':
+        pyautogui.doubleClick()
+    else:
+        pyautogui.click(button=button)
 
     return jsonify({'text': 'ok'})
 
