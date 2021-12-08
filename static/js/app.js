@@ -1,5 +1,29 @@
 DEBUG = false;
 
+// SOURCE: https://stackoverflow.com/a/31023717/5909792
+function Cache(maxLength) {
+    this.clear = function() {
+        this.values = [];
+    }
+
+    this.clear();
+
+    this.store = function(data) {
+        if (this.values.length >= maxLength) {
+            this.getLast();
+        }
+        return this.values.push(data);
+    }
+
+    this.getLast = function() {
+        return this.values.splice(0, 1)[0];
+    }
+}
+
+window.cacheFrames = new Cache(100);
+TIMEOUT_FOR_DRAWING_SCREENSHOT_CANVAS_MS = 30;
+
+
 function send_ajax(url, data, callbackFunc) {
     if (DEBUG) console.log(data);
     if (DEBUG) console.log(JSON.stringify(data));
@@ -61,6 +85,9 @@ function init_switch_stream_mode() {
     var CURRENT_SCREENSHOT_TIME = 0;
 
     function set_stream_mode(value) {
+        // Чистим кэш при любом значении
+        window.cacheFrames.clear();
+
         send_ajax('/set_stream_mode', {'value': value});
     }
 
@@ -87,6 +114,16 @@ function init_switch_stream_mode() {
         set_stream_mode(this.checked);
     });
 
+    // Отрисовываем кадры из кэша
+    setInterval(
+        () => {
+            let is_checked = switch_stream_mode.prop('checked');
+            let img_base64 = window.cacheFrames.getLast();
+            set_screenshot_canvas(is_checked && img_base64 ? img_base64 : '');
+        },
+        TIMEOUT_FOR_DRAWING_SCREENSHOT_CANVAS_MS
+    );
+
     // NOTE: socket инициализируется в index.html
     document.socket.on('about_screenshot', function(msg, cb) {
         if (DEBUG) {
@@ -95,12 +132,19 @@ function init_switch_stream_mode() {
             console.log("about_screenshot");
         }
 
-        let is_checked = switch_stream_mode.prop('checked');
-        if (is_checked) {
-            set_screenshot_canvas(msg.img_base64);
-        } else {
-            set_screenshot_canvas('');
-        }
+        // Добавление кадра в кэша
+        window.cacheFrames.store(msg.img_base64);
+
+        // TODO: количество, размер кадра, сумма кадров в кэше
+        let s = 0;
+        window.cacheFrames.values.forEach(x => {
+            s += x.length;
+        });
+        console.log(
+            window.cacheFrames.values.length,
+            msg.img_base64.length,
+            s
+        );
 
         if (cb)
             cb();
