@@ -76,6 +76,15 @@ function init_switch_stream_mode() {
         screenshot_canvas.css('background-repeat', 'no-repeat');
         screenshot_canvas.css('background-size', 'contain');
         screenshot_canvas.css('background-position', 'center center');
+
+//        TODO: <canvas id="screenshot_canvas_2" class="w-100 h-100"></canvas>
+//        let canvas = document.getElementById("screenshot_canvas_2");
+//        let ctx = canvas.getContext("2d");
+//        let image = new Image();
+//        image.onload = function() {
+//            ctx.drawImage(image, 0, 0);
+//        };
+//        image.src = url_or_data;
     }
 
     let switch_stream_mode = $('#switch_stream_mode');
