@@ -201,11 +201,11 @@ function init_control_handlers() {
         send_ajax("/scroll", data);
     });
 
-    $("#button_show_cursor_as_target").click(function() {
+    $(".button_show_cursor_as_target").click(function() {
         send_ajax("/show_cursor_as_target");
     });
 
-    $("#button_full_black_screen").click(function() {
+    $(".button_full_black_screen").click(function() {
         send_ajax("/full_black_screen");
     });
 
