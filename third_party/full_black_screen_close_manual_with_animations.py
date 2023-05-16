@@ -10,8 +10,8 @@ from PyQt5.QtWidgets import QApplication, QWidget
 from PyQt5.QtGui import QPainter, QPaintEvent
 from PyQt5.QtCore import QTimer
 
-from third_party.full_black_screen_close_manual import MainWindow as BaseMainWindow
-from third_party.pyq5__simple_balls__with_part_transparent_body import Ball, get_random_vector, get_random_color
+from full_black_screen_close_manual import MainWindow as BaseMainWindow
+from pyq5__simple_balls__with_part_transparent_body import Ball, get_random_vector, get_random_color
 
 
 class Animation:

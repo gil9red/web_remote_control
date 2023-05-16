@@ -27,7 +27,10 @@ from engineio.payload import Payload
 
 from third_party.remote_controller__widget_with_webserver import frameless_widget_with_webserver
 from third_party.show_target_icon__behind_cursor import main as show_target_icon__behind_cursor
-import third_party.full_black_screen_close_manual_with_animations
+
+import third_party
+sys.path.insert(0, third_party.__path__[0])
+import full_black_screen_close_manual_with_animations
 
 
 Payload.max_decode_packets = 1000
@@ -98,7 +101,7 @@ def show_cursor_as_target():
 
 
 def full_black_screen():
-    script_file_name = third_party.full_black_screen_close_manual_with_animations.__file__
+    script_file_name = full_black_screen_close_manual_with_animations.__file__
     subprocess.Popen([sys.executable, script_file_name])
 
 
